@@ -4,8 +4,7 @@
   "description": "Venox — Modern Web Design & Development Agency Website",
   "private": true,
   "scripts": {
-    "dev:frontend": "vite",
-    "dev": "concurrently \"npm run dev:frontend\"",
+    "dev": "vite",
     "build": "vite build",
     "install:all": "npm install"
   },
@@ -26,6 +25,6 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "uuid": "^13.0.0",
-    "vite": "^8.0.8"
+    "vite": "^7.0.0"
   }
 }
