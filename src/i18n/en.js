@@ -216,9 +216,9 @@ const en = {
     { tag: "Security", title: "Guardian Security Services", desc: "Trustworthy security company website with certifications.", stats: [{ label: "Quote Requests", value: "+130%" }, { label: "Trust Score", value: "A+" }], color: "#6c5ce7" },
   ],
   testimonialsData: [
-    { text: "ItsVenox completely transformed our online presence. Clients now tell us our site was the reason they chose us.", name: "Michael K.", role: "Owner, Sharp & Clean Barbershop", initials: "MK" },
-    { text: "Working with ItsVenox was refreshingly simple. Our bookings increased within the first month.", name: "Sarah L.", role: "Founder, FitPro Coaching", initials: "SL" },
-    { text: "ItsVenox delivered a professional, clean site that makes potential clients feel confident reaching out.", name: "Thomas R.", role: "Managing Director, Apex Consulting", initials: "TR" },
+    { text: "ItsVenox completely transformed our online presence. Clients now tell us our site was the reason they chose us.", name: "Michael K.", role: " ", initials: "MK" },
+    { text: "Working with ItsVenox was refreshingly simple. Our bookings increased within the first month.", name: "Sarah L.", role: " ", initials: "SL" },
+    { text: "ItsVenox delivered a professional, clean site that makes potential clients feel confident reaching out.", name: "Thomas R.", role: " ", initials: "TR" },
   ],
   cookie: {
     title: "We Value Your Privacy",

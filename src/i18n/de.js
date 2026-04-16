@@ -211,14 +211,12 @@ const de = {
     { tag: "Friseur", title: "Sharp & Clean Barbershop", desc: "Moderne Website für einen Premium-Barbershop mit Online-Buchung.", stats: [{ label: "Buchungen", value: "+85%" }, { label: "Ladezeit", value: "1,2s" }], color: "#6c5ce7" },
     { tag: "Restaurant", title: "Osteria Bella Italia", desc: "Elegante Restaurant-Website mit Online-Speisekarte und Reservierungssystem.", stats: [{ label: "Reservierungen", value: "+120%" }, { label: "Mobile-Score", value: "98" }], color: "#00d2ff" },
     { tag: "Fitness-Coach", title: "FitPro Coaching", desc: "Konversionsstarke Personal-Trainer-Website mit Lead-Generierung.", stats: [{ label: "Leads", value: "+200%" }, { label: "Absprungrate", value: "-45%" }], color: "#00d68f" },
-    { tag: "Beratung", title: "Apex Business Consulting", desc: "Professionelle B2B-Beratungs-Website mit Fallstudien.", stats: [{ label: "Anfragen", value: "+150%" }, { label: "Verweildauer", value: "+80%" }], color: "#f0a500" },
-    { tag: "Immobilien", title: "Urban Living Properties", desc: "Moderne Immobilien-Website mit Objektlisten.", stats: [{ label: "Objektaufrufe", value: "+175%" }, { label: "Kontaktrate", value: "+90%" }], color: "#e84393" },
     { tag: "Sicherheit", title: "Guardian Security Services", desc: "Vertrauenswürdige Sicherheitsunternehmen-Website mit Zertifizierungen.", stats: [{ label: "Angebotsanfragen", value: "+130%" }, { label: "Trust-Score", value: "A+" }], color: "#6c5ce7" },
   ],
   testimonialsData: [
-    { text: "ItsVenox hat unseren Online-Auftritt komplett transformiert. Kunden sagen uns, dass unsere Website der Grund war, warum sie uns gewählt haben.", name: "Michael K.", role: "Inhaber, Sharp & Clean Barbershop", initials: "MK" },
-    { text: "Die Zusammenarbeit mit ItsVenox war erfrischend einfach. Unsere Buchungen sind im ersten Monat gestiegen.", name: "Sarah L.", role: "Gründerin, FitPro Coaching", initials: "SL" },
-    { text: "ItsVenox hat eine professionelle, klare Website geliefert, die potenzielle Kunden sofort Vertrauen fassen lässt.", name: "Thomas R.", role: "Geschäftsführer, Apex Consulting", initials: "TR" },
+    { text: "ItsVenox hat unseren Online-Auftritt komplett transformiert. Kunden sagen uns, dass unsere Website der Grund war, warum sie uns gewählt haben.", name: "Michael K.", role: " ", initials: "MK" },
+    { text: "Die Zusammenarbeit mit ItsVenox war erfrischend einfach. Unsere Buchungen sind im ersten Monat gestiegen.", name: "Sarah L.", role: " ", initials: "SL" },
+    { text: "ItsVenox hat eine professionelle, klare Website geliefert, die potenzielle Kunden sofort Vertrauen fassen lässt.", name: "Thomas R.", role: " ", initials: "TR" },
   ],
   cookie: {
     title: "Wir schätzen Ihre Privatsphäre",
