@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Icons } from '../../components/Icons.jsx';
 import { adminApi } from '../../lib/adminApi.js';
 import AdminContactDetail from './AdminContactDetail.jsx';
+import StatusBadge from './StatusBadge.jsx';
+
 
 const STATUSES = ['new', 'read', 'replied', 'archived'];
 const PAGE_SIZE = 25;
@@ -202,9 +204,9 @@ function StatCard({ label, value, highlight }) {
   );
 }
 
-export function StatusBadge({ status }) {
-  return <span className={`admin-badge admin-badge-${status}`}>{capitalize(status)}</span>;
-}
+// export function StatusBadge({ status }) {
+//   return <span className={`admin-badge admin-badge-${status}`}>{capitalize(status)}</span>;
+// }
 
 function capitalize(s) {
   return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;

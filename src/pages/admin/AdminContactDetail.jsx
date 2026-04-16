@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Icons } from '../../components/Icons.jsx';
 import { adminApi } from '../../lib/adminApi.js';
-import { StatusBadge } from './AdminDashboard.jsx';
+import StatusBadge from './StatusBadge.jsx';
 
 const STATUSES = ['new', 'read', 'replied', 'archived'];
 
