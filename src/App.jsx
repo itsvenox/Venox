@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import { translations } from './i18n/index.js';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
@@ -8,6 +8,13 @@ import ContactPage from './pages/ContactPage.jsx';
 import { ServicesPage, PortfolioPage, AboutPage, ProcessPage, PricingPage, FAQPage } from './pages/ContentPages.jsx';
 import { ImpressumPage, PrivacyPage, NotFoundPage } from './pages/LegalPages.jsx';
 
+// ─── Lazy-loaded admin bundle (separate chunk, not shipped to regular visitors) ───
+const AdminApp = lazy(() => import('./pages/admin/AdminApp.jsx'));
+
+function isAdminHash(hash) {
+  return hash === '#admin' || hash.startsWith('#admin/');
+}
+
 export default function App() {
   const [lang, setLang] = useState('en');
   const [currentPage, setCurrentPage] = useState('home');
@@ -16,8 +23,16 @@ export default function App() {
   const [cookiePrefs, setCookiePrefs] = useState({ essential: true, analytics: false, marketing: false, preferences: false });
   const [showCookieSettings, setShowCookieSettings] = useState(false);
   const [faqOpen, setFaqOpen] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(() => isAdminHash(window.location.hash));
 
   const t = translations[lang];
+
+  // ─── Watch hash changes to toggle admin mode ───
+  useEffect(() => {
+    const onHashChange = () => setIsAdmin(isAdminHash(window.location.hash));
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -25,7 +40,6 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Update HTML lang attribute
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
@@ -34,6 +48,15 @@ export default function App() {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
+  // ─── Admin mode: render dashboard, skip public layout entirely ───
+  if (isAdmin) {
+    return (
+      <Suspense fallback={<AdminLoadingScreen />}>
+        <AdminApp />
+      </Suspense>
+    );
+  }
 
   const renderPage = () => {
     const props = { t, navigate, faqOpen, setFaqOpen };
@@ -63,6 +86,22 @@ export default function App() {
         showCookieSettings={showCookieSettings} setShowCookieSettings={setShowCookieSettings}
         navigate={navigate}
       />
+    </div>
+  );
+}
+
+function AdminLoadingScreen() {
+  return (
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'var(--bg, #0a0a0f)',
+      color: 'var(--text-muted, #8b8ba0)',
+      fontSize: '0.9rem',
+    }}>
+      Loading dashboard…
     </div>
   );
 }
