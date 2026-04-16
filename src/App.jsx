@@ -49,12 +49,15 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+
   // ─── Admin mode: render dashboard, skip public layout entirely ───
   if (isAdmin) {
     return (
-      <Suspense fallback={<AdminLoadingScreen />}>
-        <AdminApp />
-      </Suspense>
+      <AdminErrorBoundary>
+        <Suspense fallback={<AdminLoadingScreen />}>
+          <AdminApp />
+        </Suspense>
+      </AdminErrorBoundary>
     );
   }
 
@@ -104,4 +107,49 @@ function AdminLoadingScreen() {
       Loading dashboard…
     </div>
   );
+}
+
+class AdminErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { error };
+  }
+  componentDidCatch(error, info) {
+    console.error('[Admin] Failed to load:', error, info);
+  }
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{
+          minHeight: '100vh', display: 'flex', alignItems: 'center',
+          justifyContent: 'center', padding: 40, background: '#0a0a0f',
+          color: '#f0f0f5', fontFamily: 'system-ui, sans-serif',
+        }}>
+          <div style={{ maxWidth: 500 }}>
+            <h2 style={{ marginBottom: 12 }}>Dashboard failed to load</h2>
+            <pre style={{
+              background: '#111118', padding: 16, borderRadius: 8,
+              color: '#ff7070', fontSize: 13, overflow: 'auto',
+              border: '1px solid #1e1e2e',
+            }}>
+              {String(this.state.error?.stack || this.state.error)}
+            </pre>
+            <button
+              onClick={() => { window.location.hash = ''; window.location.reload(); }}
+              style={{
+                marginTop: 16, padding: '10px 20px', borderRadius: 999,
+                background: '#6c5ce7', color: 'white', border: 'none', cursor: 'pointer',
+              }}
+            >
+              Back to site
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
 }
