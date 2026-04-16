@@ -129,7 +129,7 @@ export default function ContactPage({ t, navigate }) {
               </div>
               <div className="contact-info-item">
                 <div className="contact-info-icon"><Icons.Phone /></div>
-                <div><div className="contact-info-label">{info.whatsapp}</div><div className="contact-info-value">+49 XXX XXXXXXX</div></div>
+                <div><div className="contact-info-label">{info.whatsapp}</div><div className="contact-info-value">+49 176 64302435</div></div>
               </div>
               <div className="contact-info-item">
                 <div className="contact-info-icon"><Icons.MapPin /></div>
