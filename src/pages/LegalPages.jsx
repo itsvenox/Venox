@@ -18,7 +18,7 @@ export function ImpressumPage({ t }) {
           <h3>Legal Representative</h3>
           <p>Omar Alizzi</p>
           <h3>Address</h3>
-          <p>[NO ADDRESS YET]<br />44141, Dortmund]<br />Germany</p>
+          <p>[NO ADDRESS YET]<br />44141, Dortmund<br />Germany</p>
           <h3>Contact</h3>
           <p>Email: hello@itsvenox.de</p>
           <h3>VAT Identification Number</h3>

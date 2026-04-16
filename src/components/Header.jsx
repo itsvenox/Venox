@@ -29,7 +29,7 @@ export default function Header({ t, currentPage, navigate, scrolled, lang, setLa
       <header className={`header ${scrolled ? 'scrolled' : ''}`}>
         <div className="header-inner">
           <a className="logo" onClick={() => navigate('home')}>
-            Veno<span>x</span>
+            <span>Its</span>Veno<span>x</span>
           </a>
           <ul className="nav-links">
             {navItems.map((item) => (

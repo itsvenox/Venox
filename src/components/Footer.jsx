@@ -6,7 +6,7 @@ export default function Footer({ t, navigate, openCookieSettings }) {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <a className="logo" onClick={() => navigate('home')}>Veno<span>x</span></a>
+            <a className="logo" onClick={() => navigate('home')}><span>Its</span>Veno<span>x</span></a>
             <p>{t.footer.tagline}</p>
           </div>
           <div className="footer-col">
