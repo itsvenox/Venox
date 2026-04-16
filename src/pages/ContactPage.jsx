@@ -125,7 +125,7 @@ export default function ContactPage({ t, navigate }) {
               <h4 style={{ marginBottom: 24 }}>{info.title}</h4>
               <div className="contact-info-item">
                 <div className="contact-info-icon"><Icons.Mail /></div>
-                <div><div className="contact-info-label">{info.email}</div><div className="contact-info-value">hello@venox.dev</div></div>
+                <div><div className="contact-info-label">{info.email}</div><div className="contact-info-value">hello@itsvenox.de</div></div>
               </div>
               <div className="contact-info-item">
                 <div className="contact-info-icon"><Icons.Phone /></div>

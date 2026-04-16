@@ -30,7 +30,7 @@ export default function HomePage({ t, navigate, faqOpen, setFaqOpen }) {
         </div>
       </section>
 
-      {/* Why Venox */}
+      {/* Why ItsVenox */}
       <section className="section">
         <div className="container">
           <SectionHeader label={t.why.label} title={t.why.title} titleHighlight={t.why.titleHighlight} subtitle={t.why.subtitle} />

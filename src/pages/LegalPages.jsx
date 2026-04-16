@@ -14,13 +14,13 @@ export function ImpressumPage({ t }) {
           <h2>Information According to § 5 TMG</h2>
           <div className="legal-placeholder">⚠️ The following details must be completed with actual business information before publishing this website.</div>
           <h3>Business Name</h3>
-          <p>Venox — Web Design & Development<br />[Legal business form]</p>
+          <p>ItsVenox — Web Design & Development<br />[Legal business form]</p>
           <h3>Legal Representative</h3>
           <p>[Full name of owner or managing director]</p>
           <h3>Address</h3>
           <p>[Street and house number]<br />[Postal code, City]<br />Germany</p>
           <h3>Contact</h3>
-          <p>Email: hello@venox.dev<br />Phone: [Phone number]</p>
+          <p>Email: hello@itsvenox.de<br />Phone: [Phone number]</p>
           <h3>VAT Identification Number</h3>
           <p>VAT ID according to § 27a UStG: [DE XXXXXXXXX]<br />(if applicable)</p>
           <h3>Responsible for Content According to § 18 Abs. 2 MStV</h3>
@@ -45,9 +45,9 @@ export function PrivacyPage({ t }) {
       </div></div>
       <section className="section-sm"><div className="container">
         <div className="legal-content">
-          <div className="legal-placeholder">⚠️ This privacy policy provides a comprehensive structure. It must be reviewed and adapted by a qualified legal professional based on the actual tools and data processing activities used by Venox before going live.</div>
+          <div className="legal-placeholder">⚠️ This privacy policy provides a comprehensive structure. It must be reviewed and adapted by a qualified legal professional based on the actual tools and data processing activities used by ItsVenox before going live.</div>
           <h2>1. Controller</h2>
-          <p>Venox — Web Design & Development<br />[Full legal name]<br />[Address]<br />Email: hello@venox.dev</p>
+          <p>ItsVenox — Web Design & Development<br />[Full legal name]<br />[Address]<br />Email: hello@itsvenox.de</p>
           <h2>2. Overview of Data Processing</h2>
           <p>We process personal data in compliance with the GDPR, BDSG, and other applicable data protection regulations.</p>
           <h2>3. Hosting</h2>
@@ -66,7 +66,7 @@ export function PrivacyPage({ t }) {
             <li>Right to object (Art. 21 GDPR)</li>
             <li>Right to withdraw consent (Art. 7(3) GDPR)</li>
           </ul>
-          <p>Contact: hello@venox.dev</p>
+          <p>Contact: hello@itsvenox.de</p>
           <h2>7. Right to Lodge a Complaint</h2>
           <p>You have the right to lodge a complaint with a supervisory authority.</p>
           <div className="legal-placeholder">⚠️ Insert the appropriate state data protection authority based on the business's registered location.</div>

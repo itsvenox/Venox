@@ -27,7 +27,7 @@ export default function Footer({ t, navigate, openCookieSettings }) {
           <div className="footer-col">
             <h5>{t.nav.contact}</h5>
             <a onClick={() => navigate('contact')}>{t.nav.contact}</a>
-            <a href="mailto:hello@venox.dev">hello@venox.dev</a>
+            <a href="mailto:hello@itsvenox.de">hello@itsvenox.de</a>
             <a>WhatsApp</a>
           </div>
         </div>

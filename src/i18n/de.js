@@ -14,7 +14,7 @@ const de = {
     trust: ["Schnelle Lieferung", "Mobile-First", "Modernes Design", "Für echte Unternehmen"],
   },
   why: {
-    label: "Warum Venox", title: "Anders gebaut.", titleHighlight: "Besser gebaut.",
+    label: "Warum ItsVenox", title: "Anders gebaut.", titleHighlight: "Besser gebaut.",
     subtitle: "Wir verbinden scharfes Design, moderne Technologie und klare Kommunikation, um Websites zu liefern, die Ihrem Unternehmen wirklich helfen.",
     cards: [
       { title: "Modernes Design", desc: "Klare, professionelle Layouts, die Ihr Unternehmen hervorheben und Vertrauen aufbauen." },
@@ -56,7 +56,7 @@ const de = {
   },
   testimonials: {
     label: "Kundenstimmen", title: "Vertrauen von", titleHighlight: "Unternehmen",
-    subtitle: "Hören Sie, was unsere Kunden über die Zusammenarbeit mit Venox sagen.",
+    subtitle: "Hören Sie, was unsere Kunden über die Zusammenarbeit mit ItsVenox sagen.",
   },
   pricingSection: {
     label: "Preise", title: "Transparente", titleHighlight: "Preise",
@@ -108,11 +108,11 @@ const de = {
     ctaSubtitle: "Lassen Sie uns besprechen, wie wir eine leistungsstarke Website für Ihr Unternehmen erstellen können.",
   },
   aboutPage: {
-    label: "Über Venox", title: "Wir bauen Websites, die", titleHighlight: "es ernst meinen",
-    subtitle: "Venox wurde gegründet, um Unternehmen Websites zu geben, die die Qualität ihrer Arbeit widerspiegeln.",
+    label: "Über ItsVenox", title: "Wir bauen Websites, die", titleHighlight: "es ernst meinen",
+    subtitle: "ItsVenox wurde gegründet, um Unternehmen Websites zu geben, die die Qualität ihrer Arbeit widerspiegeln.",
     storyTitle: "Unsere Geschichte",
     storyP1: "Zu viele kleine Unternehmen haben entweder veraltete Websites oder gar keine. Sie verlieren Kunden, bevor das erste Gespräch stattfindet – einfach weil ihr Online-Auftritt nicht die Qualität ihrer Arbeit widerspiegelt.",
-    storyP2: "Venox wurde gegründet, um das zu ändern. Wir erstellen klare, moderne Websites, die Unternehmen professionell aussehen lassen und Vertrauen aufbauen.",
+    storyP2: "ItsVenox wurde gegründet, um das zu ändern. Wir erstellen klare, moderne Websites, die Unternehmen professionell aussehen lassen und Vertrauen aufbauen.",
     storyP3: "Wir glauben, dass jedes Unternehmen eine Website verdient, auf die es stolz sein kann – eine, die genauso hart arbeitet wie sie selbst.",
     missionTitle: "Unsere Mission",
     missionText: "Professionelles, hochwertiges Webdesign für Unternehmen jeder Größe zugänglich zu machen.",
@@ -129,7 +129,7 @@ const de = {
     ],
     ctaTitle: "Lassen Sie uns", ctaTitleHighlight: "zusammenarbeiten",
     ctaSubtitle: "Bereit für eine Website, die Ihr Unternehmen wirklich repräsentiert?",
-    ctaBtn: "Venox kontaktieren",
+    ctaBtn: "ItsVenox kontaktieren",
   },
   processPage: {
     label: "Unser Ablauf", title: "Wie wir Ihre", titleHighlight: "Website zum Leben erwecken",
@@ -159,7 +159,7 @@ const de = {
   },
   faqPage: {
     label: "FAQ", title: "Fragen?", titleHighlight: "Wir haben Antworten.",
-    subtitle: "Alles, was Sie über die Zusammenarbeit mit Venox wissen müssen.",
+    subtitle: "Alles, was Sie über die Zusammenarbeit mit ItsVenox wissen müssen.",
     ctaTitle: "Noch", ctaTitleHighlight: "Fragen?",
     ctaSubtitle: "Wir beantworten gerne alles. Schreiben Sie uns eine Nachricht.",
     faqs: [
@@ -216,9 +216,9 @@ const de = {
     { tag: "Sicherheit", title: "Guardian Security Services", desc: "Vertrauenswürdige Sicherheitsunternehmen-Website mit Zertifizierungen.", stats: [{ label: "Angebotsanfragen", value: "+130%" }, { label: "Trust-Score", value: "A+" }], color: "#6c5ce7" },
   ],
   testimonialsData: [
-    { text: "Venox hat unseren Online-Auftritt komplett transformiert. Kunden sagen uns, dass unsere Website der Grund war, warum sie uns gewählt haben.", name: "Michael K.", role: "Inhaber, Sharp & Clean Barbershop", initials: "MK" },
-    { text: "Die Zusammenarbeit mit Venox war erfrischend einfach. Unsere Buchungen sind im ersten Monat gestiegen.", name: "Sarah L.", role: "Gründerin, FitPro Coaching", initials: "SL" },
-    { text: "Venox hat eine professionelle, klare Website geliefert, die potenzielle Kunden sofort Vertrauen fassen lässt.", name: "Thomas R.", role: "Geschäftsführer, Apex Consulting", initials: "TR" },
+    { text: "ItsVenox hat unseren Online-Auftritt komplett transformiert. Kunden sagen uns, dass unsere Website der Grund war, warum sie uns gewählt haben.", name: "Michael K.", role: "Inhaber, Sharp & Clean Barbershop", initials: "MK" },
+    { text: "Die Zusammenarbeit mit ItsVenox war erfrischend einfach. Unsere Buchungen sind im ersten Monat gestiegen.", name: "Sarah L.", role: "Gründerin, FitPro Coaching", initials: "SL" },
+    { text: "ItsVenox hat eine professionelle, klare Website geliefert, die potenzielle Kunden sofort Vertrauen fassen lässt.", name: "Thomas R.", role: "Geschäftsführer, Apex Consulting", initials: "TR" },
   ],
   cookie: {
     title: "Wir schätzen Ihre Privatsphäre",
@@ -237,7 +237,7 @@ const de = {
   },
   footer: {
     tagline: "Moderne Websites, die Unternehmen professionell aussehen lassen, Vertrauen aufbauen und mehr Besucher in Kunden verwandeln.",
-    company: "Unternehmen", copyright: "Venox. Alle Rechte vorbehalten.",
+    company: "Unternehmen", copyright: "ItsVenox. Alle Rechte vorbehalten.",
   },
   notFound: { title: "404", heading: "Seite nicht gefunden", text: "Die gesuchte Seite existiert nicht oder wurde verschoben.", btn: "Zurück zur Startseite" },
   langSwitch: { en: "EN", de: "DE" },

@@ -14,7 +14,7 @@ const en = {
     trust: ["Fast Delivery", "Mobile-First", "Modern Design", "Built for Real Businesses"],
   },
   why: {
-    label: "Why Venox", title: "Built Different.", titleHighlight: "Built Better.",
+    label: "Why ItsVenox", title: "Built Different.", titleHighlight: "Built Better.",
     subtitle: "We combine sharp design, modern technology, and clear communication to deliver websites that actually help your business grow.",
     cards: [
       { title: "Modern Design", desc: "Clean, professional layouts that make your business stand out and build trust with visitors." },
@@ -108,11 +108,11 @@ const en = {
     ctaSubtitle: "Let's discuss how we can create a high-performing website for your business.",
   },
   aboutPage: {
-    label: "About Venox", title: "We Build Websites That", titleHighlight: "Mean Business",
-    subtitle: "Venox was created to help businesses get websites that actually represent the quality of their work.",
+    label: "About ItsVenox", title: "We Build Websites That", titleHighlight: "Mean Business",
+    subtitle: "ItsVenox was created to help businesses get websites that actually represent the quality of their work.",
     storyTitle: "Our Story",
     storyP1: "Too many small businesses either have outdated websites or no website at all. They lose customers before the first conversation even happens — simply because their online presence doesn't reflect the quality of their work.",
-    storyP2: "Venox was built to change that. We create clean, modern websites that help businesses look professional, build trust with visitors, and turn clicks into clients.",
+    storyP2: "ItsVenox was built to change that. We create clean, modern websites that help businesses look professional, build trust with visitors, and turn clicks into clients.",
     storyP3: "We believe every business deserves a website they can be proud of — one that works as hard as they do. No templates. No generic designs. Just thoughtful, conversion-focused web design tailored to real businesses.",
     missionTitle: "Our Mission",
     missionText: "To make professional, high-quality web design accessible to businesses of all sizes.",
@@ -129,7 +129,7 @@ const en = {
     ],
     ctaTitle: "Let's Work", ctaTitleHighlight: "Together",
     ctaSubtitle: "Ready to get a website that truly represents your business?",
-    ctaBtn: "Contact Venox",
+    ctaBtn: "Contact ItsVenox",
   },
   processPage: {
     label: "Our Process", title: "How We Bring Your", titleHighlight: "Website to Life",
@@ -159,7 +159,7 @@ const en = {
   },
   faqPage: {
     label: "FAQ", title: "Questions?", titleHighlight: "We've Got Answers.",
-    subtitle: "Everything you need to know about working with Venox.",
+    subtitle: "Everything you need to know about working with ItsVenox.",
     ctaTitle: "Still Have", ctaTitleHighlight: "Questions?",
     ctaSubtitle: "We're happy to answer anything. Send us a message.",
     faqs: [
@@ -216,9 +216,9 @@ const en = {
     { tag: "Security", title: "Guardian Security Services", desc: "Trustworthy security company website with certifications.", stats: [{ label: "Quote Requests", value: "+130%" }, { label: "Trust Score", value: "A+" }], color: "#6c5ce7" },
   ],
   testimonialsData: [
-    { text: "Venox completely transformed our online presence. Clients now tell us our site was the reason they chose us.", name: "Michael K.", role: "Owner, Sharp & Clean Barbershop", initials: "MK" },
-    { text: "Working with Venox was refreshingly simple. Our bookings increased within the first month.", name: "Sarah L.", role: "Founder, FitPro Coaching", initials: "SL" },
-    { text: "Venox delivered a professional, clean site that makes potential clients feel confident reaching out.", name: "Thomas R.", role: "Managing Director, Apex Consulting", initials: "TR" },
+    { text: "ItsVenox completely transformed our online presence. Clients now tell us our site was the reason they chose us.", name: "Michael K.", role: "Owner, Sharp & Clean Barbershop", initials: "MK" },
+    { text: "Working with ItsVenox was refreshingly simple. Our bookings increased within the first month.", name: "Sarah L.", role: "Founder, FitPro Coaching", initials: "SL" },
+    { text: "ItsVenox delivered a professional, clean site that makes potential clients feel confident reaching out.", name: "Thomas R.", role: "Managing Director, Apex Consulting", initials: "TR" },
   ],
   cookie: {
     title: "We Value Your Privacy",
@@ -237,7 +237,7 @@ const en = {
   },
   footer: {
     tagline: "Modern websites built to help businesses look professional, earn trust, and convert more visitors into customers.",
-    company: "Company", copyright: "Venox. All rights reserved.",
+    company: "Company", copyright: "ItsVenox. All rights reserved.",
   },
   notFound: { title: "404", heading: "Page Not Found", text: "The page you're looking for doesn't exist or has been moved.", btn: "Back to Homepage" },
   langSwitch: { en: "EN", de: "DE" },
