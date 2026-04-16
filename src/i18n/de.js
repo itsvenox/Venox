@@ -152,9 +152,9 @@ const de = {
     ctaTitle: "Etwas", ctaTitleHighlight: "Individuelles?",
     ctaSubtitle: "Jedes Unternehmen ist anders. Lassen Sie uns Ihre Bedürfnisse besprechen.",
     packages: [
-      { name: "Starter", price: "€1.490", desc: "Perfekt für kleine Unternehmen, die eine professionelle Website brauchen.", features: ["Bis zu 3 Seiten", "Modernes responsives Design", "Kontaktformular", "Basis-SEO-Setup", "Mobile-First-Build", "1 Korrekturschleife", "2 Wochen Lieferzeit", "Hosting-Beratung"] },
-      { name: "Business", price: "€2.990", desc: "Für Unternehmen, die eine stärkere Online-Präsenz brauchen.", badge: "Beliebteste Wahl", features: ["Bis zu 7 Seiten", "Individuelles Design & Layout", "Erweiterte Kontaktformulare", "Vollständige SEO-Grundlagen", "Performance-Optimierung", "2 Korrekturschleifen", "3 Wochen Lieferzeit", "Analytics-Setup (einwilligungsbasiert)", "Content-Beratung", "Prioritäts-Support während des Builds"] },
-      { name: "Premium", price: "€4.990", desc: "Für Unternehmen, die eine Premium-Website mit voller Unterstützung wollen.", features: ["Bis zu 15 Seiten", "Premium Custom-Design", "Erweiterte Integrationen", "Komplette SEO-Strategie", "Performance-Optimierung", "3 Korrekturschleifen", "4 Wochen Lieferzeit", "Analytics & Tracking Setup", "Content-Writing-Support", "3 Monate Wartung inklusive", "Prioritäts-Support"] },
+      { name: "Starter", price: "€290", desc: "Perfekt für kleine Unternehmen, die eine professionelle Website brauchen.", features: ["Bis zu 3 Seiten", "Modernes responsives Design", "Kontaktformular", "Basis-SEO-Setup", "Mobile-First-Build", "1 Korrekturschleife", "2 Wochen Lieferzeit", "Hosting-Beratung"] },
+      { name: "Business", price: "€490", desc: "Für Unternehmen, die eine stärkere Online-Präsenz brauchen.", badge: "Beliebteste Wahl", features: ["Bis zu 7 Seiten", "Individuelles Design & Layout", "Erweiterte Kontaktformulare", "Vollständige SEO-Grundlagen", "Performance-Optimierung", "2 Korrekturschleifen", "3 Wochen Lieferzeit", "Analytics-Setup (einwilligungsbasiert)", "Content-Beratung", "Prioritäts-Support während des Builds"] },
+      { name: "Premium", price: "€790", desc: "Für Unternehmen, die eine Premium-Website mit voller Unterstützung wollen.", features: ["Bis zu 15 Seiten", "Premium Custom-Design", "Erweiterte Integrationen", "Komplette SEO-Strategie", "Performance-Optimierung", "3 Korrekturschleifen", "4 Wochen Lieferzeit", "Analytics & Tracking Setup", "Content-Writing-Support", "3 Monate Wartung inklusive", "Prioritäts-Support"] },
     ],
   },
   faqPage: {

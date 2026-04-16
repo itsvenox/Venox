@@ -152,9 +152,9 @@ const en = {
     ctaTitle: "Need Something", ctaTitleHighlight: "Custom?",
     ctaSubtitle: "Every business is different. Let's discuss your specific needs.",
     packages: [
-      { name: "Starter", price: "€1,490", desc: "Perfect for small businesses that need a professional website to get started.", features: ["Up to 3 pages", "Modern responsive design", "Contact form", "Basic SEO setup", "Mobile-first build", "1 round of revisions", "2-week delivery", "Hosting guidance"] },
-      { name: "Business", price: "€2,990", desc: "For businesses that need a stronger online presence.", badge: "Most Popular", features: ["Up to 7 pages", "Custom design & layout", "Advanced contact forms", "Full SEO foundations", "Performance optimization", "2 rounds of revisions", "3-week delivery", "Analytics setup (consent-based)", "Content guidance", "Priority support during build"] },
-      { name: "Premium", price: "€4,990", desc: "For businesses that want a premium, strategically built website.", features: ["Up to 15 pages", "Premium custom design", "Advanced integrations", "Complete SEO strategy", "Performance optimization", "3 rounds of revisions", "4-week delivery", "Analytics & tracking setup", "Content writing support", "3 months maintenance included", "Priority ongoing support"] },
+      { name: "Starter", price: "€290", desc: "Perfect for small businesses that need a professional website to get started.", features: ["Up to 3 pages", "Modern responsive design", "Contact form", "Basic SEO setup", "Mobile-first build", "1 round of revisions", "2-week delivery", "Hosting guidance"] },
+      { name: "Business", price: "€490", desc: "For businesses that need a stronger online presence.", badge: "Most Popular", features: ["Up to 7 pages", "Custom design & layout", "Advanced contact forms", "Full SEO foundations", "Performance optimization", "2 rounds of revisions", "3-week delivery", "Analytics setup (consent-based)", "Content guidance", "Priority support during build"] },
+      { name: "Premium", price: "€790", desc: "For businesses that want a premium, strategically built website.", features: ["Up to 15 pages", "Premium custom design", "Advanced integrations", "Complete SEO strategy", "Performance optimization", "3 rounds of revisions", "4-week delivery", "Analytics & tracking setup", "Content writing support", "3 months maintenance included", "Priority ongoing support"] },
     ],
   },
   faqPage: {
@@ -188,7 +188,7 @@ const en = {
       type: "Project Type", typePlaceholder: "Select a service",
       typeOptions: ["New Business Website", "Landing Page", "Website Redesign", "Mobile Optimization", "SEO Setup", "Maintenance", "Other"],
       budget: "Budget Range", budgetPlaceholder: "Select range",
-      budgetOptions: ["Under €1,500", "€1,500 – €3,000", "€3,000 – €5,000", "€5,000+", "Not sure yet"],
+      budgetOptions: ["Under €500", "€500 – €700", "€700 – €1,500", "€1,500+", "Not sure yet"],
       message: "Tell Us About Your Project",
       messagePlaceholder: "Describe your business, goals, and what you're looking for...",
       consent: "I agree that my data will be processed to handle my inquiry. I have read the",
