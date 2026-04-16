@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Icons } from '../components/Icons.jsx';
 
-const API_URL = 'http://api.itsvenox.de/api';
+const API_URL = 'https://api.itsvenox.de/api';
 
 export default function ContactPage({ t, navigate }) {
   const [formData, setFormData] = useState({
