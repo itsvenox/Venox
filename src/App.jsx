@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { translations } from './i18n/index.js';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
@@ -15,9 +16,9 @@ function isAdminHash(hash) {
   return hash === '#admin' || hash.startsWith('#admin/');
 }
 
-export default function App() {
+// ─── Inner app — has access to router context ───
+function SiteApp() {
   const [lang, setLang] = useState('en');
-  const [currentPage, setCurrentPage] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [cookieConsent, setCookieConsent] = useState(null);
   const [cookiePrefs, setCookiePrefs] = useState({ essential: true, analytics: false, marketing: false, preferences: false });
@@ -25,6 +26,8 @@ export default function App() {
   const [faqOpen, setFaqOpen] = useState(null);
   const [isAdmin, setIsAdmin] = useState(() => isAdminHash(window.location.hash));
 
+  const navigate = useNavigate();
+  const location = useLocation();
   const t = translations[lang];
 
   // ─── Watch hash changes to toggle admin mode ───
@@ -44,11 +47,17 @@ export default function App() {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const navigate = useCallback((page) => {
-    setCurrentPage(page);
+  // Scroll to top on route change
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+  }, [location.pathname]);
 
+  // ─── navigate() shim — callers pass page IDs like 'services', 'pricing', etc.
+  //     We convert to real URL paths so existing call sites don't need changing. ───
+  const navigateTo = useCallback((page) => {
+    const path = page === 'home' ? '/' : `/${page}`;
+    navigate(path);
+  }, [navigate]);
 
   // ─── Admin mode: render dashboard, skip public layout entirely ───
   if (isAdmin) {
@@ -61,35 +70,45 @@ export default function App() {
     );
   }
 
-  const renderPage = () => {
-    const props = { t, navigate, faqOpen, setFaqOpen };
-    switch (currentPage) {
-      case 'home': return <HomePage {...props} />;
-      case 'services': return <ServicesPage {...props} />;
-      case 'portfolio': return <PortfolioPage {...props} />;
-      case 'about': return <AboutPage {...props} />;
-      case 'process': return <ProcessPage {...props} />;
-      case 'pricing': return <PricingPage {...props} />;
-      case 'faq': return <FAQPage {...props} />;
-      case 'contact': return <ContactPage {...props} />;
-      case 'impressum': return <ImpressumPage {...props} />;
-      case 'privacy': return <PrivacyPage {...props} />;
-      default: return <NotFoundPage {...props} />;
-    }
-  };
+  // Derive currentPage string from pathname for Header active-link highlight
+  const currentPage = location.pathname === '/' ? 'home' : location.pathname.replace(/^\//, '');
+
+  const pageProps = { t, navigate: navigateTo, faqOpen, setFaqOpen };
 
   return (
     <div style={{ minHeight: '100vh' }}>
-      <Header t={t} currentPage={currentPage} navigate={navigate} scrolled={scrolled} lang={lang} setLang={setLang} />
-      {renderPage()}
-      <Footer t={t} navigate={navigate} openCookieSettings={() => setShowCookieSettings(true)} />
+      <Header t={t} currentPage={currentPage} navigate={navigateTo} scrolled={scrolled} lang={lang} setLang={setLang} />
+
+      <Routes>
+        <Route path="/"           element={<HomePage     {...pageProps} />} />
+        <Route path="/services"   element={<ServicesPage  {...pageProps} />} />
+        <Route path="/portfolio"  element={<PortfolioPage {...pageProps} />} />
+        <Route path="/about"      element={<AboutPage     {...pageProps} />} />
+        <Route path="/process"    element={<ProcessPage   {...pageProps} />} />
+        <Route path="/pricing"    element={<PricingPage   {...pageProps} />} />
+        <Route path="/faq"        element={<FAQPage       {...pageProps} />} />
+        <Route path="/contact"    element={<ContactPage   {...pageProps} />} />
+        <Route path="/impressum"  element={<ImpressumPage {...pageProps} />} />
+        <Route path="/privacy"    element={<PrivacyPage   {...pageProps} />} />
+        <Route path="*"           element={<NotFoundPage  {...pageProps} />} />
+      </Routes>
+
+      <Footer t={t} navigate={navigateTo} openCookieSettings={() => setShowCookieSettings(true)} />
       <CookieBanner
         t={t} cookieConsent={cookieConsent} setCookieConsent={setCookieConsent}
         cookiePrefs={cookiePrefs} setCookiePrefs={setCookiePrefs}
         showCookieSettings={showCookieSettings} setShowCookieSettings={setShowCookieSettings}
-        navigate={navigate}
+        navigate={navigateTo}
       />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <SiteApp />
+    </BrowserRouter>
   );
 }
 

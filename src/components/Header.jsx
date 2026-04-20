@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { Icons } from './Icons.jsx';
+
+// Map page IDs to URL paths
+const PAGE_PATH = {
+  home:      '/',
+  services:  '/services',
+  portfolio: '/portfolio',
+  about:     '/about',
+  process:   '/process',
+  pricing:   '/pricing',
+  faq:       '/faq',
+  contact:   '/contact',
+};
 
 export default function Header({ t, currentPage, navigate, scrolled, lang, setLang }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'home', label: t.nav.home },
-    { id: 'services', label: t.nav.services },
+    { id: 'home',      label: t.nav.home },
+    { id: 'services',  label: t.nav.services },
     { id: 'portfolio', label: t.nav.portfolio },
-    { id: 'about', label: t.nav.about },
-    { id: 'pricing', label: t.nav.pricing },
-    { id: 'contact', label: t.nav.contact },
+    { id: 'about',     label: t.nav.about },
+    { id: 'pricing',   label: t.nav.pricing },
+    { id: 'contact',   label: t.nav.contact },
   ];
 
   const LangSwitch = () => (
@@ -28,25 +41,26 @@ export default function Header({ t, currentPage, navigate, scrolled, lang, setLa
     <>
       <header className={`header ${scrolled ? 'scrolled' : ''}`}>
         <div className="header-inner">
-          <a className="logo" onClick={() => navigate('home')}>
+          <Link className="logo" to="/">
             <span>Its</span>Veno<span>x</span>
-          </a>
+          </Link>
           <ul className="nav-links">
             {navItems.map((item) => (
               <li key={item.id}>
-                <a
-                  className={currentPage === item.id ? 'active' : ''}
-                  onClick={() => navigate(item.id)}
+                <NavLink
+                  to={PAGE_PATH[item.id]}
+                  className={({ isActive }) => isActive ? 'active' : ''}
+                  end={item.id === 'home'}
                 >
                   {item.label}
-                </a>
+                </NavLink>
               </li>
             ))}
             <li><LangSwitch /></li>
             <li>
-              <button className="btn btn-primary btn-sm" onClick={() => navigate('contact')}>
+              <Link className="btn btn-primary btn-sm" to="/contact">
                 {t.nav.getQuote}
-              </button>
+              </Link>
             </li>
           </ul>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -68,14 +82,23 @@ export default function Header({ t, currentPage, navigate, scrolled, lang, setLa
             <Icons.X />
           </button>
           {navItems.map((item) => (
-            <a key={item.id} onClick={() => { navigate(item.id); setMobileMenuOpen(false); }}>
+            <NavLink
+              key={item.id}
+              to={PAGE_PATH[item.id]}
+              end={item.id === 'home'}
+              onClick={() => setMobileMenuOpen(false)}
+            >
               {item.label}
-            </a>
+            </NavLink>
           ))}
           <LangSwitch />
-          <button className="btn btn-primary" onClick={() => { navigate('contact'); setMobileMenuOpen(false); }}>
+          <Link
+            className="btn btn-primary"
+            to="/contact"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             {t.nav.getQuote}
-          </button>
+          </Link>
         </div>
       )}
     </>

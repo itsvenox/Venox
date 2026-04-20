@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer({ t, navigate, openCookieSettings }) {
   return (
@@ -6,27 +7,27 @@ export default function Footer({ t, navigate, openCookieSettings }) {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <a className="logo" onClick={() => navigate('home')}><span>Its</span>Veno<span>x</span></a>
+            <Link className="logo" to="/"><span>Its</span>Veno<span>x</span></Link>
             <p>{t.footer.tagline}</p>
           </div>
           <div className="footer-col">
             <h5>{t.nav.services}</h5>
-            <a onClick={() => navigate('services')}>Business Websites</a>
-            <a onClick={() => navigate('services')}>Landing Pages</a>
-            <a onClick={() => navigate('services')}>Website Redesign</a>
-            <a onClick={() => navigate('services')}>SEO</a>
+            <Link to="/services">Business Websites</Link>
+            <Link to="/services">Landing Pages</Link>
+            <Link to="/services">Website Redesign</Link>
+            <Link to="/services">SEO</Link>
           </div>
           <div className="footer-col">
             <h5>{t.footer.company}</h5>
-            <a onClick={() => navigate('about')}>{t.nav.about}</a>
-            <a onClick={() => navigate('portfolio')}>{t.nav.portfolio}</a>
-            <a onClick={() => navigate('process')}>{t.nav.process}</a>
-            <a onClick={() => navigate('pricing')}>{t.nav.pricing}</a>
-            <a onClick={() => navigate('faq')}>{t.nav.faq}</a>
+            <Link to="/about">{t.nav.about}</Link>
+            <Link to="/portfolio">{t.nav.portfolio}</Link>
+            <Link to="/process">{t.nav.process}</Link>
+            <Link to="/pricing">{t.nav.pricing}</Link>
+            <Link to="/faq">{t.nav.faq}</Link>
           </div>
           <div className="footer-col">
             <h5>{t.nav.contact}</h5>
-            <a onClick={() => navigate('contact')}>{t.nav.contact}</a>
+            <Link to="/contact">{t.nav.contact}</Link>
             <a href="mailto:hello@itsvenox.de">hello@itsvenox.de</a>
             <a>WhatsApp</a>
           </div>
@@ -34,9 +35,9 @@ export default function Footer({ t, navigate, openCookieSettings }) {
         <div className="footer-bottom">
           <span>&copy; {new Date().getFullYear()} {t.footer.copyright}</span>
           <div className="footer-legal">
-            <a onClick={() => navigate('impressum')}>{t.nav.impressum}</a>
-            <a onClick={() => navigate('privacy')}>{t.nav.privacy}</a>
-            <a onClick={openCookieSettings}>{t.nav.cookieSettings}</a>
+            <Link to="/impressum">{t.nav.impressum}</Link>
+            <Link to="/privacy">{t.nav.privacy}</Link>
+            <a onClick={openCookieSettings} style={{ cursor: 'pointer' }}>{t.nav.cookieSettings}</a>
           </div>
         </div>
       </div>
