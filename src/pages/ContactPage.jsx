@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO.jsx';
+import {
+  pageMeta,
+  organizationSchema,
+  breadcrumb,
+  contactPageSchema,
+} from '../seo/seoData.js';
 import { Icons } from '../components/Icons.jsx';
 
 const API_URL = 'https://api.itsvenox.de/api';
 
-export default function ContactPage({ t, navigate }) {
+export default function ContactPage({ t, lang, navigate }) {
+  const meta = pageMeta.contact[lang];
+
   const [formData, setFormData] = useState({
     name: '', email: '', company: '', phone: '',
     budget: '', type: '', message: '', consent: false,
@@ -22,7 +31,6 @@ export default function ContactPage({ t, navigate }) {
       const res = await fetch(`${API_URL}/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // Send consent as the string "true" to satisfy express-validator's .equals('true')
         body: JSON.stringify({ ...formData, consent: formData.consent ? 'true' : 'false' }),
       });
       const data = await res.json();
@@ -44,6 +52,21 @@ export default function ContactPage({ t, navigate }) {
 
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/contact"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          organizationSchema,
+          breadcrumb([
+            { name: lang === 'de' ? 'Startseite' : 'Home', path: '/' },
+            { name: lang === 'de' ? 'Kontakt' : 'Contact', path: '/contact' },
+          ]),
+          contactPageSchema(lang),
+        ]}
+      />
+
       <div className="page-hero"><div className="container">
         <div className="section-label" style={{ justifyContent: 'center' }}>{t.contactPage.label}</div>
         <h1>{t.contactPage.title} <span className="gradient-text">{t.contactPage.titleHighlight}</span></h1>

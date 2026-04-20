@@ -1,10 +1,28 @@
 import React from 'react';
+import SEO from '../components/SEO.jsx';
+import { pageMeta, breadcrumb, organizationSchema } from '../seo/seoData.js';
 import { Icons } from '../components/Icons.jsx';
 
 // ─── IMPRESSUM PAGE ───
-export function ImpressumPage({ t }) {
+export function ImpressumPage({ t, lang }) {
+  const meta = pageMeta.impressum[lang];
+
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/impressum"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          organizationSchema,
+          breadcrumb([
+            { name: lang === 'de' ? 'Startseite' : 'Home', path: '/' },
+            { name: 'Impressum', path: '/impressum' },
+          ]),
+        ]}
+      />
+
       <div className="page-hero"><div className="container">
         <h1>Impressum</h1>
         <p>{t.nav.impressum}</p>
@@ -12,7 +30,6 @@ export function ImpressumPage({ t }) {
       <section className="section-sm"><div className="container">
         <div className="legal-content">
           <h2>Information According to § 5 TMG</h2>
-          {/* <div className="legal-placeholder">⚠️ The following details must be completed with actual business information before publishing this website.</div> */}
           <h3>Business Name</h3>
           <p>ItsVenox — Web Design & Development</p>
           <h3>Legal Representative</h3>
@@ -28,7 +45,6 @@ export function ImpressumPage({ t }) {
           <h3>Dispute Resolution</h3>
           <p>The European Commission provides a platform for online dispute resolution (ODR): <em>https://ec.europa.eu/consumers/odr</em>.</p>
           <p>We are not willing or obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
-          {/* <div className="legal-placeholder">⚠️ This legal notice should be reviewed with a qualified legal professional before the website goes live.</div> */}
         </div>
       </div></section>
     </>
@@ -36,16 +52,30 @@ export function ImpressumPage({ t }) {
 }
 
 // ─── PRIVACY PAGE ───
-export function PrivacyPage({ t }) {
+export function PrivacyPage({ t, lang }) {
+  const meta = pageMeta.privacy[lang];
+
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/privacy"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          breadcrumb([
+            { name: lang === 'de' ? 'Startseite' : 'Home', path: '/' },
+            { name: lang === 'de' ? 'Datenschutz' : 'Privacy Policy', path: '/privacy' },
+          ]),
+        ]}
+      />
+
       <div className="page-hero"><div className="container">
         <h1>{t.nav.privacy}</h1>
         <p>Datenschutzerklärung</p>
       </div></div>
       <section className="section-sm"><div className="container">
         <div className="legal-content">
-          {/* <div className="legal-placeholder">⚠️ This privacy policy provides a comprehensive structure. It must be reviewed and adapted by a qualified legal professional based on the actual tools and data processing activities used by ItsVenox before going live.</div> */}
           <h2>1. Controller</h2>
           <p>ItsVenox — Web Design & Development<br />Omar Alizzi<br />Email: hello@itsvenox.de</p>
           <h2>2. Overview of Data Processing</h2>
@@ -69,7 +99,6 @@ export function PrivacyPage({ t }) {
           <p>Contact: hello@itsvenox.de</p>
           <h2>7. Right to Lodge a Complaint</h2>
           <p>You have the right to lodge a complaint with a supervisory authority.</p>
-          {/* <div className="legal-placeholder">⚠️ Insert the appropriate state data protection authority based on the business's registered location.</div> */}
           <h2>8. Data Retention</h2>
           <p>Personal data is retained only as long as necessary for the stated purposes or as required by statutory retention obligations.</p>
           <h2>9. Changes to This Privacy Policy</h2>
@@ -82,15 +111,27 @@ export function PrivacyPage({ t }) {
 }
 
 // ─── 404 PAGE ───
-export function NotFoundPage({ t, navigate }) {
+export function NotFoundPage({ t, lang, navigate }) {
+  const meta = pageMeta.notFound[lang];
+
   return (
-    <div className="not-found">
-      <div>
-        <h1 className="gradient-text">{t.notFound.title}</h1>
-        <h3>{t.notFound.heading}</h3>
-        <p>{t.notFound.text}</p>
-        <button className="btn btn-primary btn-lg" onClick={() => navigate('home')}>{t.notFound.btn} <Icons.Arrow /></button>
+    <>
+      <SEO
+        lang={lang}
+        path="/404"
+        title={meta.title}
+        description={meta.description}
+        noindex={true}
+      />
+
+      <div className="not-found">
+        <div>
+          <h1 className="gradient-text">{t.notFound.title}</h1>
+          <h3>{t.notFound.heading}</h3>
+          <p>{t.notFound.text}</p>
+          <button className="btn btn-primary btn-lg" onClick={() => navigate('home')}>{t.notFound.btn} <Icons.Arrow /></button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

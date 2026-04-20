@@ -1,10 +1,32 @@
 import React from 'react';
+import SEO from '../components/SEO.jsx';
+import {
+  pageMeta,
+  organizationSchema,
+  websiteSchema,
+  faqSchema,
+} from '../seo/seoData.js';
 import { Icons } from '../components/Icons.jsx';
 import { WebMockup, ProjectCard, SectionHeader, CTASection } from '../components/Shared.jsx';
 
-export default function HomePage({ t, navigate, faqOpen, setFaqOpen }) {
+export default function HomePage({ t, lang, navigate, faqOpen, setFaqOpen }) {
+  const meta = pageMeta.home[lang];
+
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          organizationSchema,
+          websiteSchema(lang),
+          // Home page shows the first 5 FAQs — still worth marking up for rich results
+          faqSchema(t.faqPage.faqs.slice(0, 5)),
+        ]}
+      />
+
       {/* Hero */}
       <section className="hero">
         <div className="container">

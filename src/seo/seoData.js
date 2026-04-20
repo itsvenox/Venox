@@ -19,12 +19,13 @@ export const organizationSchema = {
   description:
     'Modern web design and development agency building clean, high-converting websites for businesses.',
   priceRange: '€€',
+  founder: { '@type': 'Person', name: 'Omar Alizzi' },
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Metzingen',
-    addressRegion: 'Baden-Württemberg',
+    postalCode: '44141',
+    addressLocality: 'Dortmund',
+    addressRegion: 'Nordrhein-Westfalen',
     addressCountry: 'DE',
-    // Add full street + postal code here once you finalise the Impressum
   },
   areaServed: [
     { '@type': 'Country', name: 'Germany' },
@@ -49,7 +50,8 @@ export const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer support',
-    email: 'hello@itsvenox.de', // replace with real one
+    email: 'hello@itsvenox.de',
+    telephone: '+49-176-64302435',
     availableLanguage: ['English', 'German'],
   },
 };
@@ -95,8 +97,32 @@ export function faqSchema(faqs) {
   };
 }
 
+// ─── Website schema (home only) ─────────────────────────────────────────
+export function websiteSchema(lang) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: 'Venox',
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    inLanguage: lang === 'de' ? 'de-DE' : 'en-US',
+  };
+}
+
+// ─── Contact page schema ────────────────────────────────────────────────
+export function contactPageSchema(lang) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: lang === 'de' ? 'Kontakt' : 'Contact',
+    url: `${SITE_URL}/contact`,
+    inLanguage: lang === 'de' ? 'de-DE' : 'en-US',
+    about: { '@id': `${SITE_URL}/#organization` },
+  };
+}
+
 // ─── Per-page metadata ──────────────────────────────────────────────────
-// Each key is a route; each route has `en` and `de` variants.
 export const pageMeta = {
   home: {
     en: {

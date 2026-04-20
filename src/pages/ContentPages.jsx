@@ -1,11 +1,41 @@
 import React from 'react';
+import SEO from '../components/SEO.jsx';
+import {
+  pageMeta,
+  organizationSchema,
+  breadcrumb,
+  serviceSchema,
+  faqSchema,
+} from '../seo/seoData.js';
 import { Icons } from '../components/Icons.jsx';
 import { SectionHeader, CTASection, ProjectCard } from '../components/Shared.jsx';
 
 // ─── SERVICES PAGE ───
-export function ServicesPage({ t, navigate }) {
+export function ServicesPage({ t, lang, navigate }) {
+  const meta = pageMeta.services[lang];
+
+  // One Service schema per offering — richer results potential
+  const services = t.servicesPage.items.map((s) =>
+    serviceSchema(s.title, s.desc, lang === 'de' ? 'de-DE' : 'en-US')
+  );
+
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/services"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          organizationSchema,
+          breadcrumb([
+            { name: lang === 'de' ? 'Startseite' : 'Home', path: '/' },
+            { name: lang === 'de' ? 'Leistungen' : 'Services', path: '/services' },
+          ]),
+          ...services,
+        ]}
+      />
+
       <div className="page-hero"><div className="container">
         <div className="section-label" style={{ justifyContent: 'center' }}>{t.servicesPage.label}</div>
         <h1>{t.servicesPage.title} <span className="gradient-text">{t.servicesPage.titleHighlight}</span></h1>
@@ -40,9 +70,45 @@ export function ServicesPage({ t, navigate }) {
 }
 
 // ─── PORTFOLIO PAGE ───
-export function PortfolioPage({ t, navigate }) {
+export function PortfolioPage({ t, lang, navigate }) {
+  const meta = pageMeta.portfolio[lang];
+
+  // CollectionPage schema helps Google understand this is a gallery of work
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: meta.title,
+    description: meta.description,
+    url: 'https://itsvenox.de/portfolio',
+    inLanguage: lang === 'de' ? 'de-DE' : 'en-US',
+    isPartOf: { '@id': 'https://itsvenox.de/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: t.portfolio.length,
+      itemListElement: t.portfolio.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: p.title || p.name || `Project ${i + 1}`,
+      })),
+    },
+  };
+
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/portfolio"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          breadcrumb([
+            { name: lang === 'de' ? 'Startseite' : 'Home', path: '/' },
+            { name: 'Portfolio', path: '/portfolio' },
+          ]),
+          collectionSchema,
+        ]}
+      />
+
       <div className="page-hero"><div className="container">
         <div className="section-label" style={{ justifyContent: 'center' }}>{t.portfolioPage.label}</div>
         <h1>{t.portfolioPage.title} <span className="gradient-text">{t.portfolioPage.titleHighlight}</span></h1>
@@ -61,9 +127,36 @@ export function PortfolioPage({ t, navigate }) {
 }
 
 // ─── ABOUT PAGE ───
-export function AboutPage({ t, navigate }) {
+export function AboutPage({ t, lang, navigate }) {
+  const meta = pageMeta.about[lang];
+
+  const aboutPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: meta.title,
+    description: meta.description,
+    url: 'https://itsvenox.de/about',
+    inLanguage: lang === 'de' ? 'de-DE' : 'en-US',
+    mainEntity: { '@id': 'https://itsvenox.de/#organization' },
+  };
+
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/about"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          organizationSchema,
+          breadcrumb([
+            { name: lang === 'de' ? 'Startseite' : 'Home', path: '/' },
+            { name: lang === 'de' ? 'Über uns' : 'About', path: '/about' },
+          ]),
+          aboutPageSchema,
+        ]}
+      />
+
       <div className="page-hero"><div className="container">
         <div className="section-label" style={{ justifyContent: 'center' }}>{t.aboutPage.label}</div>
         <h1>{t.aboutPage.title} <span className="gradient-text">{t.aboutPage.titleHighlight}</span></h1>
@@ -105,9 +198,40 @@ export function AboutPage({ t, navigate }) {
 }
 
 // ─── PROCESS PAGE ───
-export function ProcessPage({ t, navigate }) {
+export function ProcessPage({ t, lang, navigate }) {
+  const meta = pageMeta.process[lang];
+
+  // HowTo schema — your process is a perfect fit for this
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: meta.title,
+    description: meta.description,
+    inLanguage: lang === 'de' ? 'de-DE' : 'en-US',
+    step: t.processPage.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.title,
+      text: s.desc,
+    })),
+  };
+
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/process"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          breadcrumb([
+            { name: lang === 'de' ? 'Startseite' : 'Home', path: '/' },
+            { name: lang === 'de' ? 'Ablauf' : 'Process', path: '/process' },
+          ]),
+          howToSchema,
+        ]}
+      />
+
       <div className="page-hero"><div className="container">
         <div className="section-label" style={{ justifyContent: 'center' }}>{t.processPage.label}</div>
         <h1>{t.processPage.title} <span className="gradient-text">{t.processPage.titleHighlight}</span></h1>
@@ -137,9 +261,47 @@ export function ProcessPage({ t, navigate }) {
 }
 
 // ─── PRICING PAGE ───
-export function PricingPage({ t, navigate }) {
+export function PricingPage({ t, lang, navigate }) {
+  const meta = pageMeta.pricing[lang];
+
+  // Each package as a Product with an Offer — can get price shown in search
+  const offerSchemas = t.pricingPage.packages.map((p) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `Venox ${p.name}`,
+    description: p.desc,
+    brand: { '@type': 'Brand', name: 'Venox' },
+    offers: {
+      '@type': 'Offer',
+      url: 'https://itsvenox.de/pricing',
+      priceCurrency: 'EUR',
+      price: String(p.price).replace(/[^\d]/g, '') || '0',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: String(p.price).replace(/[^\d]/g, '') || '0',
+        priceCurrency: 'EUR',
+      },
+      availability: 'https://schema.org/InStock',
+      seller: { '@id': 'https://itsvenox.de/#organization' },
+    },
+  }));
+
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/pricing"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          breadcrumb([
+            { name: lang === 'de' ? 'Startseite' : 'Home', path: '/' },
+            { name: lang === 'de' ? 'Preise' : 'Pricing', path: '/pricing' },
+          ]),
+          ...offerSchemas,
+        ]}
+      />
+
       <div className="page-hero"><div className="container">
         <div className="section-label" style={{ justifyContent: 'center' }}>{t.pricingPage.label}</div>
         <h1>{t.pricingPage.title} <span className="gradient-text">{t.pricingPage.titleHighlight}</span></h1>
@@ -183,9 +345,26 @@ export function PricingPage({ t, navigate }) {
 }
 
 // ─── FAQ PAGE ───
-export function FAQPage({ t, navigate, faqOpen, setFaqOpen }) {
+export function FAQPage({ t, lang, navigate, faqOpen, setFaqOpen }) {
+  const meta = pageMeta.faq[lang];
+
   return (
     <>
+      <SEO
+        lang={lang}
+        path="/faq"
+        title={meta.title}
+        description={meta.description}
+        jsonLd={[
+          breadcrumb([
+            { name: lang === 'de' ? 'Startseite' : 'Home', path: '/' },
+            { name: 'FAQ', path: '/faq' },
+          ]),
+          // Full FAQ markup — can get rich results on Google
+          faqSchema(t.faqPage.faqs),
+        ]}
+      />
+
       <div className="page-hero"><div className="container">
         <div className="section-label" style={{ justifyContent: 'center' }}>{t.faqPage.label}</div>
         <h1>{t.faqPage.title} <span className="gradient-text">{t.faqPage.titleHighlight}</span></h1>
