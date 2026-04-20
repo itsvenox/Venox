@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://itsvenox.de/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://itsvenox.de/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://itsvenox.de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://itsvenox.de/"/>
+  </url>
+
+  <url>
+    <loc>https://itsvenox.de/services</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://itsvenox.de/services"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://itsvenox.de/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://itsvenox.de/services"/>
+  </url>
+
+  <url>
+    <loc>https://itsvenox.de/portfolio</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://itsvenox.de/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://itsvenox.de/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://itsvenox.de/portfolio"/>
+  </url>
+
+  <url>
+    <loc>https://itsvenox.de/about</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://itsvenox.de/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://itsvenox.de/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://itsvenox.de/about"/>
+  </url>
+
+  <url>
+    <loc>https://itsvenox.de/process</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://itsvenox.de/process"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://itsvenox.de/process"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://itsvenox.de/process"/>
+  </url>
+
+  <url>
+    <loc>https://itsvenox.de/pricing</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://itsvenox.de/pricing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://itsvenox.de/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://itsvenox.de/pricing"/>
+  </url>
+
+  <url>
+    <loc>https://itsvenox.de/faq</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://itsvenox.de/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://itsvenox.de/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://itsvenox.de/faq"/>
+  </url>
+
+  <url>
+    <loc>https://itsvenox.de/contact</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://itsvenox.de/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://itsvenox.de/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://itsvenox.de/contact"/>
+  </url>
+
+  <url>
+    <loc>https://itsvenox.de/impressum</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://itsvenox.de/privacy</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

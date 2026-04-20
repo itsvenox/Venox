@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { translations } from './i18n/index.js';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
@@ -9,28 +10,41 @@ import ContactPage from './pages/ContactPage.jsx';
 import { ServicesPage, PortfolioPage, AboutPage, ProcessPage, PricingPage, FAQPage } from './pages/ContentPages.jsx';
 import { ImpressumPage, PrivacyPage, NotFoundPage } from './pages/LegalPages.jsx';
 
-// ─── Lazy-loaded admin bundle (separate chunk, not shipped to regular visitors) ───
 const AdminApp = lazy(() => import('./pages/admin/AdminApp.jsx'));
 
 function isAdminHash(hash) {
   return hash === '#admin' || hash.startsWith('#admin/');
 }
 
-// ─── Inner app — has access to router context ───
+// ─── Detect initial language from browser / URL / storage ───
+function detectInitialLang() {
+  if (typeof window === 'undefined') return 'en'; // SSR safety
+  const stored = window.localStorage?.getItem('venox-lang');
+  if (stored === 'en' || stored === 'de') return stored;
+  const browser = (navigator.language || 'en').toLowerCase();
+  return browser.startsWith('de') ? 'de' : 'en';
+}
+
 function SiteApp() {
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = useState(detectInitialLang);
   const [scrolled, setScrolled] = useState(false);
   const [cookieConsent, setCookieConsent] = useState(null);
   const [cookiePrefs, setCookiePrefs] = useState({ essential: true, analytics: false, marketing: false, preferences: false });
   const [showCookieSettings, setShowCookieSettings] = useState(false);
   const [faqOpen, setFaqOpen] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(() => isAdminHash(window.location.hash));
+  const [isAdmin, setIsAdmin] = useState(() =>
+    typeof window !== 'undefined' ? isAdminHash(window.location.hash) : false
+  );
 
   const navigate = useNavigate();
   const location = useLocation();
   const t = translations[lang];
 
-  // ─── Watch hash changes to toggle admin mode ───
+  // Persist language choice
+  useEffect(() => {
+    try { window.localStorage?.setItem('venox-lang', lang); } catch {}
+  }, [lang]);
+
   useEffect(() => {
     const onHashChange = () => setIsAdmin(isAdminHash(window.location.hash));
     window.addEventListener('hashchange', onHashChange);
@@ -44,22 +58,18 @@ function SiteApp() {
   }, []);
 
   useEffect(() => {
-    document.documentElement.lang = lang;
+    if (typeof document !== 'undefined') document.documentElement.lang = lang;
   }, [lang]);
 
-  // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location.pathname]);
 
-  // ─── navigate() shim — callers pass page IDs like 'services', 'pricing', etc.
-  //     We convert to real URL paths so existing call sites don't need changing. ───
   const navigateTo = useCallback((page) => {
     const path = page === 'home' ? '/' : `/${page}`;
     navigate(path);
   }, [navigate]);
 
-  // ─── Admin mode: render dashboard, skip public layout entirely ───
   if (isAdmin) {
     return (
       <AdminErrorBoundary>
@@ -70,10 +80,10 @@ function SiteApp() {
     );
   }
 
-  // Derive currentPage string from pathname for Header active-link highlight
   const currentPage = location.pathname === '/' ? 'home' : location.pathname.replace(/^\//, '');
 
-  const pageProps = { t, navigate: navigateTo, faqOpen, setFaqOpen };
+  // Pass `lang` to every page so they can render per-language SEO meta
+  const pageProps = { t, lang, navigate: navigateTo, faqOpen, setFaqOpen };
 
   return (
     <div style={{ minHeight: '100vh' }}>
@@ -106,22 +116,19 @@ function SiteApp() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <SiteApp />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <SiteApp />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
 function AdminLoadingScreen() {
   return (
     <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: 'var(--bg, #0a0a0f)',
-      color: 'var(--text-muted, #8b8ba0)',
-      fontSize: '0.9rem',
+      minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: 'var(--bg, #0a0a0f)', color: 'var(--text-muted, #8b8ba0)', fontSize: '0.9rem',
     }}>
       Loading dashboard…
     </div>
@@ -129,16 +136,9 @@ function AdminLoadingScreen() {
 }
 
 class AdminErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { error: null };
-  }
-  static getDerivedStateFromError(error) {
-    return { error };
-  }
-  componentDidCatch(error, info) {
-    console.error('[Admin] Failed to load:', error, info);
-  }
+  constructor(props) { super(props); this.state = { error: null }; }
+  static getDerivedStateFromError(error) { return { error }; }
+  componentDidCatch(error, info) { console.error('[Admin] Failed to load:', error, info); }
   render() {
     if (this.state.error) {
       return (
@@ -153,18 +153,14 @@ class AdminErrorBoundary extends React.Component {
               background: '#111118', padding: 16, borderRadius: 8,
               color: '#ff7070', fontSize: 13, overflow: 'auto',
               border: '1px solid #1e1e2e',
-            }}>
-              {String(this.state.error?.stack || this.state.error)}
-            </pre>
+            }}>{String(this.state.error?.stack || this.state.error)}</pre>
             <button
               onClick={() => { window.location.hash = ''; window.location.reload(); }}
               style={{
                 marginTop: 16, padding: '10px 20px', borderRadius: 999,
                 background: '#6c5ce7', color: 'white', border: 'none', cursor: 'pointer',
               }}
-            >
-              Back to site
-            </button>
+            >Back to site</button>
           </div>
         </div>
       );

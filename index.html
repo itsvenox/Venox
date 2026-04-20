@@ -2,35 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0f" />
+
+  <!-- These are fallbacks — react-helmet-async overrides them per route -->
   <title>Venox — Modern Web Design & Development for Businesses</title>
   <meta name="description" content="We build clean, high-converting websites for small businesses, startups, and service providers. Professional design, fast delivery, real results." />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Venox" />
 
-  <!-- Open Graph -->
+  <!-- Favicons — replace the SVG placeholder with real ones -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Sitemap discovery -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+  <!-- Preconnect to font origins — faster LCP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Default Open Graph — Helmet overrides per page -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Venox" />
   <meta property="og:title" content="Venox — Modern Web Design & Development" />
   <meta property="og:description" content="We build clean, high-converting websites for businesses that want a stronger online presence and more customer trust." />
   <meta property="og:url" content="https://itsvenox.de" />
-  <meta property="og:site_name" content="Venox" />
+  <meta property="og:image" content="https://itsvenox.de/og-default.png" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="de_DE" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Venox — Modern Web Design & Development" />
   <meta name="twitter:description" content="Professional websites for businesses that want to grow." />
+  <meta name="twitter:image" content="https://itsvenox.de/og-default.png" />
 
-  <!-- Favicon placeholder -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>V</text></svg>" />
-
-  <!-- Preconnect fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Organisation JSON-LD — rendered server-side so crawlers see it immediately -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://itsvenox.de/#organization",
+    "name": "Venox",
+    "alternateName": "ItsVenox",
+    "url": "https://itsvenox.de",
+    "logo": "https://itsvenox.de/logo.png",
+    "image": "https://itsvenox.de/og-default.png",
+    "description": "Modern web design and development agency building clean, high-converting websites for businesses.",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Metzingen",
+      "addressRegion": "Baden-Württemberg",
+      "addressCountry": "DE"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Germany" },
+      { "@type": "Country", "name": "Austria" },
+      { "@type": "Country", "name": "Switzerland" }
+    ],
+    "serviceType": ["Web Design", "Web Development", "SEO", "Website Maintenance"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "hello@itsvenox.de",
+      "availableLanguage": ["English", "German"]
+    }
+  }
+  </script>
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+  <script type="module" src="/main.jsx"></script>
 </body>
 </html>

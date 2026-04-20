@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Venox — Modern Web Design & Development Agency Website",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
+    "build:no-prerender": "vite build",
     "install:all": "npm install"
   },
   "devDependencies": {
@@ -24,6 +26,7 @@
     "nodemailer": "^8.0.5",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "react-helmet-async": "^2.0.5",
     "react-router-dom": "^6.30.1",
     "uuid": "^13.0.0",
     "vite": "^7.0.0"
