@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from '@dr.pogodin/react-helmet';
 import { translations } from './i18n/index.js';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';

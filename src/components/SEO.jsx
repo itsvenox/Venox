@@ -1,9 +1,13 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 /**
  * SEO component — injects per-page meta, canonical, hreflang, Open Graph,
  * Twitter Card, and optional JSON-LD structured data.
+ *
+ * Uses @dr.pogodin/react-helmet (React 19 compatible, actively maintained fork
+ * of react-helmet-async). Same API as react-helmet-async, just a different
+ * import path.
  *
  * Usage:
  *   <SEO
@@ -31,7 +35,7 @@ export default function SEO({
   const canonical = `${SITE_URL}${path === '/' ? '' : path}`;
   const alternateEn = `${SITE_URL}${path === '/' ? '' : path}`;
   const alternateDe = `${SITE_URL}${path === '/' ? '' : path}`;
-  // Note: we serve both languages on the same URL via a client-side language switcher.
+  // Note: both languages share the same URL (client-side language switcher).
   // If you later split by URL (/en/, /de/), update alternates here.
 
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
@@ -39,14 +43,15 @@ export default function SEO({
   const ogLocaleAlternate = lang === 'de' ? 'en_US' : 'de_DE';
 
   return (
-    <Helmet>
+    <Helmet prioritizeSeoTags>
       <html lang={lang} />
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonical} />
 
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
-      {!noindex && <meta name="robots" content="index, follow, max-image-preview:large" />}
+      {noindex
+        ? <meta name="robots" content="noindex, nofollow" />
+        : <meta name="robots" content="index, follow, max-image-preview:large" />}
 
       {/* hreflang — tell Google which language version to serve */}
       <link rel="alternate" hrefLang="en" href={alternateEn} />
