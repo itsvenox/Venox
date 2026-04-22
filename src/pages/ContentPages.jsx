@@ -328,7 +328,7 @@ export function PricingPage({ t, lang, navigate }) {
           <p style={{ marginBottom: 32, maxWidth: 500, margin: '0 auto 32px' }}>{t.pricingSection.maintenance.subtitle}</p>
           <div className="card" style={{ maxWidth: 500, margin: '0 auto', textAlign: 'left' }}>
             <div className="pricing-name">{t.pricingSection.maintenance.name}</div>
-            <div className="pricing-price" style={{ fontSize: '2rem' }}><span>{t.pricingSection.from} </span>€99<span>{t.pricingSection.perMonth}</span></div>
+            <div className="pricing-price" style={{ fontSize: '2rem' }}><span>{t.pricingSection.from} </span>€49<span>{t.pricingSection.perMonth}</span></div>
             <div className="pricing-desc">{t.pricingSection.maintenance.desc}</div>
             <ul className="pricing-features">
               {t.pricingSection.maintenance.features.map((f, j) => <li key={j}><Icons.Check />{f}</li>)}

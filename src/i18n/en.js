@@ -188,7 +188,7 @@ const en = {
       type: "Project Type", typePlaceholder: "Select a service",
       typeOptions: ["New Business Website", "Landing Page", "Website Redesign", "Mobile Optimization", "SEO Setup", "Maintenance", "Other"],
       budget: "Budget Range", budgetPlaceholder: "Select range",
-      budgetOptions: ["Under €500", "€500 – €700", "€700 – €1,500", "€1,500+", "Not sure yet"],
+      budgetOptions: ["Under €350", "€350 – €500", "€500 – €900", "€900+", "Not sure yet"],
       message: "Tell Us About Your Project",
       messagePlaceholder: "Describe your business, goals, and what you're looking for...",
       consent: "I agree that my data will be processed to handle my inquiry. I have read the",

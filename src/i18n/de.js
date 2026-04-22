@@ -188,7 +188,7 @@ const de = {
       type: "Projektart", typePlaceholder: "Leistung auswählen",
       typeOptions: ["Neue Business-Website", "Landing Page", "Website-Redesign", "Mobile Optimierung", "SEO-Setup", "Wartung", "Sonstiges"],
       budget: "Budgetrahmen", budgetPlaceholder: "Bereich auswählen",
-      budgetOptions: ["Unter €1.500", "€1.500 – €3.000", "€3.000 – €5.000", "€5.000+", "Noch unsicher"],
+      budgetOptions: ["Unter €350", "€350 – €500", "€500 – €900", "€900+", "Noch nicht sicher"],
       message: "Erzählen Sie uns von Ihrem Projekt",
       messagePlaceholder: "Beschreiben Sie Ihr Unternehmen, Ihre Ziele und was Sie sich für Ihre Website wünschen...",
       consent: "Ich stimme zu, dass meine Daten zur Bearbeitung meiner Anfrage verarbeitet werden. Ich habe die",
