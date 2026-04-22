@@ -33,11 +33,9 @@ async function prerender() {
     appType: 'custom',
   });
 
-  // Load AppShell (router-less, helmet-less) and HelmetProvider through Vite's SSR module graph.
-  // Loading HelmetProvider via ssrLoadModule guarantees we get the same module instance React sees
-  // when AppShell's children call useHelmet, so context propagation is correct.
+  // AppShell owns its own HelmetProvider (using the same module instance the inner <Helmet>
+  // components resolve through Vite). We just hand it a fresh context object for each route.
   const { AppShell } = await vite.ssrLoadModule('/App.jsx');
-  const { HelmetProvider } = await vite.ssrLoadModule('@dr.pogodin/react-helmet');
 
   const templateHtml = readFileSync(resolve(distDir, 'index.html'), 'utf-8');
 
@@ -46,13 +44,9 @@ async function prerender() {
 
     const appHtml = renderToString(
       React.createElement(
-        HelmetProvider,
-        { context: helmetContext },
-        React.createElement(
-          StaticRouter,
-          { location: route },
-          React.createElement(AppShell)
-        )
+        StaticRouter,
+        { location: route },
+        React.createElement(AppShell, { helmetContext })
       )
     );
 

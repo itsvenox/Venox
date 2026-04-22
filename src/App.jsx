@@ -114,22 +114,25 @@ function SiteApp() {
   );
 }
 
-// ─── Named export: bare app, no router and no HelmetProvider ───
-// The prerender script imports this and wraps it in its own <StaticRouter> + <HelmetProvider>.
-// Kept as a separate component purely so the SSR entry has something router-free to render.
-export function AppShell() {
-  return <SiteApp />;
+// ─── Named export: router-less shell ───
+// Owns the HelmetProvider itself so there's only ever one HelmetProvider module instance
+// in the render tree. The prerender script passes its own helmetContext via the prop;
+// the browser leaves it undefined and a fresh context is used.
+export function AppShell({ helmetContext }) {
+  return (
+    <HelmetProvider context={helmetContext}>
+      <SiteApp />
+    </HelmetProvider>
+  );
 }
 
 // ─── Default export: browser entry ───
-// Wraps AppShell in the browser-side providers: BrowserRouter + HelmetProvider.
+// Wraps AppShell in <BrowserRouter> for client-side use from main.jsx.
 export default function App() {
   return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <SiteApp />
-      </BrowserRouter>
-    </HelmetProvider>
+    <BrowserRouter>
+      <AppShell />
+    </BrowserRouter>
   );
 }
 
