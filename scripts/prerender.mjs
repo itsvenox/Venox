@@ -1,9 +1,3 @@
-/**
- * Post-build prerender — generates static HTML for each route.
- *
- * Uses @dr.pogodin/react-helmet (React 19 compatible).
- */
-
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
@@ -11,7 +5,6 @@ import { createServer } from 'vite';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server.js';
-import { HelmetProvider } from '@dr.pogodin/react-helmet';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -40,7 +33,12 @@ async function prerender() {
     appType: 'custom',
   });
 
-  const { default: App } = await vite.ssrLoadModule('/App.jsx');
+  // Load AppShell (router-less, helmet-less) and HelmetProvider through Vite's SSR module graph.
+  // Loading HelmetProvider via ssrLoadModule guarantees we get the same module instance React sees
+  // when AppShell's children call useHelmet, so context propagation is correct.
+  const { AppShell } = await vite.ssrLoadModule('/App.jsx');
+  const { HelmetProvider } = await vite.ssrLoadModule('@dr.pogodin/react-helmet');
+
   const templateHtml = readFileSync(resolve(distDir, 'index.html'), 'utf-8');
 
   for (const route of ROUTES) {
@@ -53,23 +51,31 @@ async function prerender() {
         React.createElement(
           StaticRouter,
           { location: route },
-          React.createElement(App)
+          React.createElement(AppShell)
         )
       )
     );
 
     const { helmet } = helmetContext;
-    const headTags = [
-      helmet?.title?.toString() || '',
-      helmet?.meta?.toString() || '',
-      helmet?.link?.toString() || '',
-      helmet?.script?.toString() || '',
-    ].join('\n    ');
+    const headTags = helmet
+      ? [
+          helmet.title?.toString() || '',
+          helmet.meta?.toString() || '',
+          helmet.link?.toString() || '',
+          helmet.script?.toString() || '',
+        ].filter(Boolean).join('\n    ')
+      : '';
 
-    const finalHtml = templateHtml
-      .replace(/<title>.*?<\/title>/s, '')
-      .replace('</head>', `    ${headTags}\n  </head>`)
-      .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
+    let finalHtml = templateHtml.replace(
+      '<div id="root"></div>',
+      `<div id="root">${appHtml}</div>`
+    );
+
+    if (headTags) {
+      finalHtml = finalHtml
+        .replace(/<title>.*?<\/title>/s, '')
+        .replace('</head>', `    ${headTags}\n  </head>`);
+    }
 
     const outPath =
       route === '/'

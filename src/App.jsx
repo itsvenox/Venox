@@ -114,6 +114,15 @@ function SiteApp() {
   );
 }
 
+// ─── Named export: bare app, no router and no HelmetProvider ───
+// The prerender script imports this and wraps it in its own <StaticRouter> + <HelmetProvider>.
+// Kept as a separate component purely so the SSR entry has something router-free to render.
+export function AppShell() {
+  return <SiteApp />;
+}
+
+// ─── Default export: browser entry ───
+// Wraps AppShell in the browser-side providers: BrowserRouter + HelmetProvider.
 export default function App() {
   return (
     <HelmetProvider>
