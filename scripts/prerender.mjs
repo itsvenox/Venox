@@ -10,7 +10,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { createServer } from 'vite';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
+import { StaticRouter } from 'react-router-dom/server.js';
 import { HelmetProvider } from '@dr.pogodin/react-helmet';
 
 const __filename = fileURLToPath(import.meta.url);
