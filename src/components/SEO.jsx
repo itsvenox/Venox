@@ -20,7 +20,7 @@ import { Helmet } from '@dr.pogodin/react-helmet';
  */
 
 const SITE_URL = 'https://itsvenox.de';
-const SITE_NAME = 'Venox';
+const SITE_NAME = 'Itsvenox';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.png`; // 1200x630 — create one & drop in /public
 
 export default function SEO({
